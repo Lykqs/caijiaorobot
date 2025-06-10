@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="fishrobot">
+    <!-- 机器人身体的部分-->
+    <link name="base_link">
+        <visual>
+            <!-- 沿着自己几何中心的偏移量 -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- 几何形状 -->
+            <geometry>
+            <!-- 这是一个圆柱体，半径为10cm，高度为12cm -->
+                <cylinder radius="0.1" length="0.12"/>
+            </geometry>
+            <!-- 这是材质和颜色的描述 -->
+            <material name="white"> 
+                <color rgba="1.0 1.0 1.0 0.5"/>
+            </material>
+        </visual>
+    </link>  
+</robot>

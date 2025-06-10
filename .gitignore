@@ -1,0 +1,17 @@
+# ========== ROS 编译相关 ==========
+build/
+devel/
+install/
+build_isolated/
+devel_isolated/
+log/
+# ========== 通用编译产物 ==========
+*.so # 动态链接库
+*.a # 静态库
+*.o # 目标文件
+*.py[cod] # Python 编译缓存
+__pycache__/ # Python 缓存目录
+
+# ========== 编辑器/临时文件 ==========
+.vscode/ # VSCode 配置（可选，若不想提交编辑器配置）
+*.swp # Vim 交换文件
