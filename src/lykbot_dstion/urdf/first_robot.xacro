@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="fishrobot">
+    <xacro:macro name = "base_link" params="length radius">
+            <!-- 机器人身体的部分-->
+        <link name="base_link">
+            <visual>
+                <!-- 沿着自己几何中心的偏移量 -->
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <!-- 几何形状 -->
+                <geometry>
+                <!-- 这是一个圆柱体，半径为10cm，高度为12cm -->
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+                <!-- 这是材质和颜色的描述 -->
+                <material name="white"> 
+                    <color rgba="1.0 1.0 1.0 0.5"/>
+                </material>
+            </visual>
+        
+        </link> 
+    </xacro:macro>
+  <xacro:macro name = "imu_link" params="imu_name xyz">
+   <!-- 这是机器人的imu部件 -->
+        <link name="${imu_name}_link">
+        <visual>
+            <!-- 沿着自己几何中心的偏移量 -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- 几何形状 -->
+            <geometry>
+            <!-- 这是一个正方体 -->
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+            <!-- 这是材质和颜色的描述 -->
+            <material name="black"> 
+                <color rgba="0.0 0.0 0.0 0.5"/>
+            </material>
+        </visual>
+    </link>  
+     <joint name="${imu_name}_joint" type="fixed">
+        <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="${imu_name}_link"/>
+        
+    </joint>
+  </xacro:macro>
+    
+      <xacro:base_link length = "0.12" radius="0.1"/>
+    <xacro:imu_link imu_name="imu_up" xyz="0.0 0.0 0.03"/>
+    <xacro:imu_link imu_name="imu_down" xyz="0.0 0.0 -0.03"/>
+</robot>
