@@ -33,10 +33,11 @@
             </material>
         </visual>
     </link>  
-    <joint name="imu_name" type="fixed">
-        <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+    <joint name="imu_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.03" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="imu_link"/>
         
     </joint>
+ 
 </robot>

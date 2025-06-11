@@ -16,7 +16,7 @@ def generate_launch_description():
     )
     #通过文件获取文件的内容，并转换成参数值对象，一共传入robot_state_publisher
     #1.通过文件的路径获取文件的内容
-    Command_result=launch.substitutions.Command(['cat ',launch.substitutions.LaunchConfiguration('model')])
+    Command_result=launch.substitutions.Command(['xacro ',launch.substitutions.LaunchConfiguration('model')])
     #2。转化为参数值对象
     robot_value=launch_ros.parameter_descriptions.ParameterValue(Command_result,value_type=str)
 
