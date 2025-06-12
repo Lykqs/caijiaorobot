@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-   
+   <xacro:include filename="$(find lykbot_dstion)/urdf/lykbot/common_inertia.xacro"/>
   <xacro:macro name = "caster_xacro" params="caster_name xyz">
    <!-- 这是机器人的imu部件 -->
         <link name="${caster_name}_link">
@@ -16,7 +16,23 @@
             <material name="yellow"> 
                 <color rgba="1.0 1.0 1.0 0.5"/>
             </material>
+
         </visual>
+        <collision>
+                        <!-- 沿着自己几何中心的偏移量 -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- 几何形状 -->
+            <geometry>
+            <!-- 这是一个正方体 -->
+               <sphere radius="0.016"/>
+            </geometry>
+            <!-- 这是材质和颜色的描述 -->
+            <material name="yellow"> 
+                <color rgba="1.0 1.0 1.0 0.5"/>
+            </material>
+            
+        </collision>
+        
     </link>  
      <joint name="${caster_name}_joint" type="fixed">
         <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
@@ -24,6 +40,8 @@
         <child link="${caster_name}_link"/>
         
     </joint>
+     <!-- 描述质量和惯性的 -->
+    <xacro:sphere_inertia m="0.05" r="0.016" />
   </xacro:macro>
     
 

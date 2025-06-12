@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-   
+  <xacro:include filename="$(find lykbot_dstion)/urdf/lykbot/common_inertia.xacro"/> 
   <xacro:macro name = "wheel_xacro" params="wheel_name xyz">
    <!-- 这是机器人的imu部件 -->
         <link name="${wheel_name}_link">
@@ -17,6 +17,21 @@
                 <color rgba="1.0 1.0 1.0 0.5"/>
             </material>
         </visual>
+        <collision>
+                      <!-- 沿着自己几何中心的偏移量 -->
+            <origin xyz="0.0 0.0 0.0" rpy="1.59079 0.0 0.0"/>
+            <!-- 几何形状 -->
+            <geometry>
+            <!-- 这是一个正方体 -->
+               <cylinder radius="0.032" length="0.03"/>
+            </geometry>
+            <!-- 这是材质和颜色的描述 -->
+            <material name="yellow"> 
+                <color rgba="1.0 1.0 1.0 0.5"/>
+            </material>
+          
+        </collision>
+        <xacro:cylinder_inertia m="0.05" r="0.032" h="0.03"/>
     </link>  
      <joint name="${wheel_name}_joint" type="continuous">
         <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
