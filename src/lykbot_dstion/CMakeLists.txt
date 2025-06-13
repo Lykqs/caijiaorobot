@@ -25,7 +25,7 @@ endif()
 
 
 
-install(DIRECTORY launch urdf config
+install(DIRECTORY launch urdf config world
 
   DESTINATION share/${PROJECT_NAME}
 )
